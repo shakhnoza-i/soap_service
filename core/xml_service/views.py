@@ -8,8 +8,11 @@ from .services import format_xml
 class AddView(generics.GenericAPIView):
     serializer_class = AddSerializer
 
-    def get(self, request, *args, **kwargs):
-        res = format_xml()
+    def post(self, request, *args, **kwargs):
+        res = format_xml(request.data)
+        print(res)
+        import pdb
+        pdb.set_trace() 
 
         return Response(
             res, content_type='text/xml',
