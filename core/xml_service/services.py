@@ -18,6 +18,8 @@ from .serializers import AddSerializer
 
 def format_xml(data):
   root = data
+  import pdb
+  pdb.set_trace()
   login_page = root.encode('utf-8')
   soup = BeautifulSoup(login_page)
   int_a = int(soup.find('inta').text)
