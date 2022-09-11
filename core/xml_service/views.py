@@ -12,7 +12,7 @@ class AddView(generics.GenericAPIView):
     def post(self, request, *args, **kwargs):
         print(request)
         print(request.data) # {'{http://schemas.xmlsoap.org/soap/envelope/}Body': {'{http://tempuri.org/}Add': {'{http://tempuri.org/}intA': 8, '{http://tempuri.org/}intB': 15}}}
-        res = ''
+        res = format_xml(request.data)
 
         return Response(
             res, content_type='text/xml',

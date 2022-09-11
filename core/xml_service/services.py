@@ -17,12 +17,11 @@ from .serializers import AddSerializer
 
 
 def format_xml(data):
-  root = data
-  import pdb
-  pdb.set_trace()
-  login_page = root.encode('utf-8')
-  soup = BeautifulSoup(login_page)
-  int_a = int(soup.find('inta').text)
-  int_b = int(soup.find('intb').text)
+  root = data['{http://schemas.xmlsoap.org/soap/envelope/}Body']
+  lev1 = root['{http://tempuri.org/}Add']
+  int_a = lev1['{http://tempuri.org/}intA']
+  int_b = lev1['{http://tempuri.org/}intB']
+  # import pdb
+  # pdb.set_trace()
   int_c = int_a + int_b
   return render_to_string("add_response.xml", {"int_c": int_c,})
