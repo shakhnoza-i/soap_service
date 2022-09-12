@@ -1,9 +1,9 @@
 from django.urls import path
 from rest_framework.urlpatterns import format_suffix_patterns
-from .views import AddView, add_post
+from .views import MathView, add_post
 
 urlpatterns = [
-    path('add/', AddView.as_view(), name='add-api'),
+    path('math/', MathView.as_view(), name='math-api'),
     # path('add/', add_post, name='add-api'),
 ]
 

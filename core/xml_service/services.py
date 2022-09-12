@@ -1,27 +1,33 @@
 from bs4 import BeautifulSoup
 from django.template.loader import render_to_string
-from .serializers import AddSerializer
-
-
-# root = """
-# <?xml version="1.0" encoding="utf-8"?>
-# <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-#   <soap:Body>
-#     <Add xmlns="http://tempuri.org/">
-#       <intA>8</intA>
-#       <intB>15</intB>
-#     </Add>
-#   </soap:Body>
-# </soap:Envelope>
-# """
 
 
 def format_xml(data):
   root = data['{http://schemas.xmlsoap.org/soap/envelope/}Body']
-  lev1 = root['{http://tempuri.org/}Add']
+
+  math_oper = str(root).split(':')[1].split('}')[-1][0:-1]
+  # breakpoint()
+  if math_oper == 'Add':
+    lev1 = root['{http://tempuri.org/}Add']
+  elif math_oper == 'Subtract':
+    lev1 = root['{http://tempuri.org/}Subtract']
+  elif math_oper == 'Multiply':
+    lev1 = root['{http://tempuri.org/}Multiply']
+  else:
+    lev1 = root['{http://tempuri.org/}Divide']
+
   int_a = lev1['{http://tempuri.org/}intA']
   int_b = lev1['{http://tempuri.org/}intB']
-  # import pdb
-  # pdb.set_trace()
-  int_c = int_a + int_b
-  return render_to_string("add_response.xml", {"int_c": int_c,})
+
+  if math_oper == 'Add':
+    int_c = int_a + int_b
+    return render_to_string("add_response.xml", {"int_c": int_c,})
+  elif math_oper == 'Subtract':
+    int_c = int_a - int_b
+    return render_to_string("subtract_response.xml", {"int_c": int_c,})
+  elif math_oper == 'Multiply':
+    int_c = int_a * int_b
+    return render_to_string("multiply_response.xml", {"int_c": int_c,})
+  else:
+    int_c = int_a / int_b
+    return render_to_string("divide_response.xml", {"int_c": int_c,})

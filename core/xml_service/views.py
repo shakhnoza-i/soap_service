@@ -2,16 +2,16 @@ from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
-from .serializers import AddSerializer
+from .serializers import MathSerializer
 from .services import format_xml
 
 
-class AddView(generics.GenericAPIView):
-    serializer_class = AddSerializer
+class MathView(generics.GenericAPIView):
+    serializer_class = MathSerializer
 
     def post(self, request, *args, **kwargs):
-        print(request)
-        print(request.data) # {'{http://schemas.xmlsoap.org/soap/envelope/}Body': {'{http://tempuri.org/}Add': {'{http://tempuri.org/}intA': 8, '{http://tempuri.org/}intB': 15}}}
+        print(request.data) 
+# {'{http://schemas.xmlsoap.org/soap/envelope/}Body': {'{http://tempuri.org/}Add': {'{http://tempuri.org/}intA': 8, '{http://tempuri.org/}intB': 15}}}
         res = format_xml(request.data)
 
         return Response(
@@ -22,12 +22,7 @@ class AddView(generics.GenericAPIView):
 
 @api_view(['POST'])
 def add_post(request, *args, **kwargs):
-    print(request)
-    print(request.data)
     res = format_xml(request.data)
-    print(res)
-    import pdb
-    pdb.set_trace() 
 
     return Response(
         res, content_type='text/xml',
