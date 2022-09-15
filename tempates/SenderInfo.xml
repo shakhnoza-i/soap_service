@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://bip.bee.kz/common/v10/Types"> -->
+<SenderInfo>
+    <senderId>5i888739</senderId>
+    <password>qwerty12345</password>
+</SenderInfo>

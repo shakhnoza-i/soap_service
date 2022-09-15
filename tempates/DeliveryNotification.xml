@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <xsd:schema xmlns:bons1="http://bip.bee.kz/common/v10/Types" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://bip.bee.kz/common/v10/Types"> -->
+<!-- <xsd:include schemaLocation="DeliveryStatusInfo.xsd"/> -->
+<DeliveryNotification>
+    <messageId>Message identification</messageId>
+    <serviceId>Service identification</serviceId>
+    <notificationDate>2022-07-25T12:10:42.532439Z</notificationDate>
+    <deliveryStatus> <!-- type="bons1:DeliveryStatusInfo" --> </deliveryStatus>
+</DeliveryNotification>

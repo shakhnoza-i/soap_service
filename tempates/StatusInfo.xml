@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <xsd:schema xmlns:bons1="http://bip.bee.kz/common/v10/Types" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://bip.bee.kz/common/v10/Types"> -->
+<StatusInfo>
+    <code>115F</code>
+    <message>Request has been processed successfully</message>
+</StatusInfo>

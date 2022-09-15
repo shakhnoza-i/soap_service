@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://bip.bee.kz/common/v10/Types"> -->
+<MessageStatusInfo>
+    <statusCode>Message status code</statusCode>
+    <statusMessage>Message status</statusMessage>
+    <statusDate>2022-07-25T12:10:42.532439Z</statusDate>
+</MessageStatusInfo>

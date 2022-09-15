@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <xsd:schema xmlns:bons1="http://bip.bee.kz/common/v10/Types" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://bip.bee.kz/common/v10/Types">
+<xsd:include schemaLocation="MessageStatusInfo.xsd"/>
+<xsd:include schemaLocation="MessageState.xsd"/>
+<xsd:include schemaLocation="ErrorInfo.xsd"/> -->
+<ChangeStatusNotification>
+    <notificationId>Notification</notificationId>
+    <messageId>Message</messageId>
+    <notificationDate>2022-07-25T12:10:42.532439Z</notificationDate>
+    <messageState></messageState> <!-- type="bons1:MessageState" -->
+    <status></status> <!-- type="bons1:MessageStatusInfo" -->
+    <error/> <!-- type="bons1:ErrorInfo" -->
+</ChangeStatusNotification>

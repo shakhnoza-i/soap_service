@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework_xml',
     'xml_service',
     'spyne_app',
+    'wsdl_app',
 ]
 
 MIDDLEWARE = [
