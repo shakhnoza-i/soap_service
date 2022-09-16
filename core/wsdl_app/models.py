@@ -13,4 +13,5 @@ class EmailString(Unicode):
 class AsyncSendMessage(ComplexModel):
     __type_name__ = 'bons3:AsyncSendMessageRequest'
     class Attributes(ComplexModel.Attributes):
-        declare_order = 'declared'
+        declare_order = 'declared' 
+        name = 'request'
