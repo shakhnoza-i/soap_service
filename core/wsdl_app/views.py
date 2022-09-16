@@ -13,15 +13,17 @@ class SoapService(ServiceBase):
 
     # There is one input parameter and parse it as a Unicode string, cannot be null; 
     # there output is a Unicode string, too.
-    @rpc(Unicode(name="request", nillable=True), _returns=Unicode)
+    @rpc(Unicode(request="request", nillable=True, __type_name__="bons3:AsyncSendMessageRequest"), _returns=Unicode)
     def sendMessage(ctx, name):
         return 'Hello, {}'.format(name)
 
-    # There are 2 input parameters and both of them are not null integers, 
-    # the output is also an integer.
     @rpc(Integer(nillable=False), Integer(nillable=False), _returns=Integer)
     def sum(ctx, a, b):
         return int(a + b)
+
+    @rpc(Integer(nillable=False), Integer(nillable=False), _returns=Integer)
+    def subtr(ctx, a, b):
+        return int(a - b)
 
 
 # A SOAP application should be created to wrap SOAP services, the services should be 
@@ -29,7 +31,8 @@ class SoapService(ServiceBase):
 # our implementation the list is [SoapService].
 soap_app = Application(
     [SoapService],
-    tns='django.soap.example',
+    name='IAsyncChannel_N',
+    tns='http://bip.bee.kz/AsyncChannel/v10/Interfaces',
     in_protocol=Soap11(validator='lxml'),
     out_protocol=Soap11(),
 )
