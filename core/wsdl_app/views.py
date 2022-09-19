@@ -6,6 +6,9 @@ from spyne.protocol.soap import Soap11
 from spyne.server.django import DjangoApplication
 from spyne.service import ServiceBase
 
+from wsdl_app.models import (AsyncSendMessageRequest, AsyncSendMessageResponse, 
+AsyncSendDeliveryNotificationRequest, AsyncSendDeliveryNotificationResponse)
+
 
 class SoapService(ServiceBase):
     # rpc is method decorator to tag a method as a remote procedure call 
@@ -13,22 +16,16 @@ class SoapService(ServiceBase):
 
     # There is one input parameter and parse it as a Unicode string, cannot be null; 
     # there output is a Unicode string, too.
-    @rpc(Unicode(request="request", nillable=True, __type_name__="bons3:AsyncSendMessageRequest"), _returns=Unicode)
-    def sendMessage(ctx, name):
-        return 'Hello, {}'.format(name)
+    @rpc(AsyncSendMessageRequest, _returns=AsyncSendMessageResponse)
+    def sendMessage(ctx, request):
+        response = 'Hello, {}'.format(request)
+        return response
 
-    @rpc(Integer(nillable=False), Integer(nillable=False), _returns=Integer)
-    def sum(ctx, a, b):
-        return int(a + b)
-
-    @rpc(Integer(nillable=False), Integer(nillable=False), _returns=Integer)
-    def subtr(ctx, a, b):
-        return int(a - b)
+    @rpc(AsyncSendDeliveryNotificationRequest, _returns=AsyncSendDeliveryNotificationResponse)
+    def sendDeliveryNotification(ctx, request):
+        print(request)
 
 
-# A SOAP application should be created to wrap SOAP services, the services should be 
-# listed as the first argument of spyne.application.Application constructor, base on 
-# our implementation the list is [SoapService].
 soap_app = Application(
     [SoapService],
     name='IAsyncChannel_N',
