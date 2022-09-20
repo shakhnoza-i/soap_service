@@ -21,4 +21,5 @@ urlpatterns = [
     path("xml/", include("xml_service.urls")),
     path("spyne/", include("spyne_app.urls")),
     path("app/", include("wsdl_app.urls")), 
+    path("example/", include("example_app.urls")),
 ]

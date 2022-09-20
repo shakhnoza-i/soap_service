@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'xml_service',
     'spyne_app',
     'wsdl_app',
+    'example_app',
 ]
 
 MIDDLEWARE = [
