@@ -19,6 +19,7 @@ class AsyncSendMessageRequest(ComplexModel):
 
 class AsyncSendMessageResponse(ComplexModel):
     __namespace__ = 'http://bip.bee.kz/AsyncChannel/v10/ITypes'
+    schema_location = 'AsyncSendMessageRequest.xsd'
 
 
 class AsyncSendDeliveryNotificationRequest(ComplexModel):

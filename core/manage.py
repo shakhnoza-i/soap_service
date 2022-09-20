@@ -5,7 +5,8 @@ import sys
 import spyne.const
 
 
-spyne.const.RESPONSE_SUFFIX = 'ww'
+spyne.const.DEFAULT_DECLARE_ORDER = 'declared'
+
 
 def main():
     """Run administrative tasks."""

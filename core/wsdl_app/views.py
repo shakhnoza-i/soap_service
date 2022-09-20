@@ -16,12 +16,18 @@ class SoapService(ServiceBase):
 
     # There is one input parameter and parse it as a Unicode string, cannot be null; 
     # there output is a Unicode string, too.
-    @rpc(AsyncSendMessageRequest, _returns=AsyncSendMessageResponse)
+    @rpc(AsyncSendMessageRequest, 
+    _returns=AsyncSendMessageResponse,
+    _out_variable_name='response',
+    )
     def sendMessage(ctx, request):
         response = 'Hello, {}'.format(request)
         return response
 
-    @rpc(AsyncSendDeliveryNotificationRequest, _returns=AsyncSendDeliveryNotificationResponse)
+    @rpc(AsyncSendDeliveryNotificationRequest, 
+    _returns=AsyncSendDeliveryNotificationResponse, 
+    _out_variable_name='response',
+    )
     def sendDeliveryNotification(ctx, request):
         print(request)
 
