@@ -5,7 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 from spyne.error import ResourceNotFoundError, ResourceAlreadyExistsError
 from spyne.server.django import DjangoApplication
 from spyne.model.primitive import Unicode, Integer
-from spyne.model.complex import Iterable
+from spyne.model.complex import Iterable, ComplexModel
 from spyne.service import Service
 from spyne.protocol.soap import Soap11
 from spyne.application import Application
@@ -15,10 +15,11 @@ from spyne.util.django import DjangoComplexModel, DjangoService
 from example_app.models import FieldContainer
 
 
-class Container(DjangoComplexModel):
-    class Attributes(DjangoComplexModel.Attributes):
-        django_model = FieldContainer
-        django_exclude = ['excluded_field']
+class Container(ComplexModel):
+    __namespace__ = 'http://bip.bee.kz/AsyncChannel/v10/ITypes'
+    # schema_location = 'AsyncSendMessageRequest.xsd'
+    class Attributes(ComplexModel.Attributes):
+        wsdl_part_name = 'Msg'
 
 
 class HelloWorldService(Service):
