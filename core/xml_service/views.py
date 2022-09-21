@@ -10,7 +10,6 @@ class MathView(generics.GenericAPIView):
     serializer_class = MathSerializer
 
     def post(self, request, *args, **kwargs):
-        print(request.data) 
 # {'{http://schemas.xmlsoap.org/soap/envelope/}Body': {'{http://tempuri.org/}Add': {'{http://tempuri.org/}intA': 8, '{http://tempuri.org/}intB': 15}}}
         res = format_xml(request.data)
 
