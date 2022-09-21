@@ -1,28 +1,30 @@
 from django.views.decorators.csrf import csrf_exempt
 from spyne.application import Application
 from spyne.decorator import rpc
-from spyne.model.primitive import Unicode, Integer
+from spyne.model.fault import Fault
 from spyne.protocol.soap import Soap11
 from spyne.server.django import DjangoApplication
 from spyne.service import ServiceBase
 
 from wsdl_app.models import (AsyncSendMessageRequest, AsyncSendMessageResponse, 
-AsyncSendDeliveryNotificationRequest, AsyncSendDeliveryNotificationResponse)
+AsyncSendDeliveryNotificationRequest, AsyncSendDeliveryNotificationResponse,
+ErrorInfo)
 
 
 class SoapService(ServiceBase):
-    # rpc is method decorator to tag a method as a remote procedure call 
-    # in a spyne.service.ServiceBase subclass.
 
-    # There is one input parameter and parse it as a Unicode string, cannot be null; 
-    # there output is a Unicode string, too.
+
     @rpc(AsyncSendMessageRequest, 
     _returns=AsyncSendMessageResponse,
     _out_variable_name='response',
+    # _in_message_name='sendMessageRequestMsg',
+    # _out_message_name='sendMessageResponseMsg',
+    _faults=ErrorInfo,
     )
     def sendMessage(ctx, request):
         response = 'Hello, {}'.format(request)
         return response
+
 
     @rpc(AsyncSendDeliveryNotificationRequest, 
     _returns=AsyncSendDeliveryNotificationResponse, 
@@ -34,7 +36,7 @@ class SoapService(ServiceBase):
 
 soap_app = Application(
     [SoapService],
-    name='IAsyncChannel_N',
+    name='IAsyncChannel',
     tns='http://bip.bee.kz/AsyncChannel/v10/Interfaces',
     in_protocol=Soap11(validator='lxml'),
     out_protocol=Soap11(),

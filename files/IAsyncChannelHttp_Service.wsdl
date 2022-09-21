@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="AsyncChannelHttp_Service" targetNamespace="http://bip.bee.kz/AsyncChannel/v10/Interfaces/Binding" xmlns:Port_0="http://bip.bee.kz/AsyncChannel/v10/Interfaces" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:this="http://bip.bee.kz/AsyncChannel/v10/Interfaces/Binding" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:import location="IAsyncChannel.wsdl" namespace="http://bip.bee.kz/AsyncChannel/v10/Interfaces"/>
+  <wsdl:binding name="AsyncChannelHttpBinding" type="Port_0:IAsyncChannel"> <!-- match -->
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/> <!-- match -->
+    <wsdl:operation name="sendMessage">  <!-- match -->
+      <soap:operation soapAction=""/>  <!-- soapAction="sendMessage" style="document" -->
+      <wsdl:input name="sendMessageRequest">  <!-- name="sendMessage" -->
+        <soap:body use="literal"/>  <!-- match -->
+      </wsdl:input>  <!-- match -->
+      <wsdl:output name="sendMessageResponse">  <!-- match -->
+        <soap:body use="literal"/>  <!-- match -->
+      </wsdl:output>  <!-- match -->
+      <wsdl:fault name="sendMessageFault">  <!-- name="ErrorInfo -->
+        <soap:fault name="sendMessageFault" use="literal"/>  <!-- name="ErrorInfo" use="literal" -->
+      </wsdl:fault>  <!-- match -->
+    </wsdl:operation>  <!-- match -->
+    <wsdl:operation name="sendDeliveryNotification">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="sendDeliveryNotificationRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sendDeliveryNotificationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="sendDeliveryNotificationFault">
+        <soap:fault name="sendDeliveryNotificationFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getMessageStatus">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getMessageStatusRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getMessageStatusResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="getMessageStatusFault">
+        <soap:fault name="getMessageStatusFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getMessages">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getMessagesRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getMessagesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="getMessagesFault">
+        <soap:fault name="getMessagesFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AsyncChannelHttpService">  <!-- name="SoapService" -->
+    <wsdl:port binding="this:AsyncChannelHttpBinding" name="AsyncChannelHttpPort">  <!-- match -->
+      <soap:address location="http://localhost:9080/SerrviceSampleTypesWeb/sca/AsyncChannelService"/>
+    </wsdl:port>  <!-- match -->
+  </wsdl:service>  <!-- match -->
+</wsdl:definitions>
