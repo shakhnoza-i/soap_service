@@ -1,4 +1,7 @@
-<xsd:schema xmlns:bons0="http://bip.bee.kz/common/v10/Types" xmlns:bons3="http://bip.bee.kz/AsyncChannel/v10/ITypes" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://bip.bee.kz/AsyncChannel/v10/Types">
+<xsd:schema xmlns:bons0="http://bip.bee.kz/common/v10/Types" 
+xmlns:bons3="http://bip.bee.kz/AsyncChannel/v10/ITypes" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+targetNamespace="http://bip.bee.kz/AsyncChannel/v10/Types">
 <xsd:import namespace="http://bip.bee.kz/common/v10/Types" schemaLocation="../../../common/v10/Types/ErrorInfo.xsd"/>
 <xsd:import namespace="http://bip.bee.kz/AsyncChannel/v10/ITypes" schemaLocation="AsyncSendMessageResponse.xsd"/>
 <xsd:import namespace="http://bip.bee.kz/AsyncChannel/v10/ITypes" schemaLocation="AsyncSendMessageRequest.xsd"/>

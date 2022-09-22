@@ -12,6 +12,7 @@ class AsyncSendMessageRequest(ComplexModel):
 
 class AsyncSendMessageResponse(ComplexModel):
     __namespace__ = 'http://bip.bee.kz/AsyncChannel/v10/ITypes'
+    in_body_doc = 'Ответ'
     messageId = Unicode(doc='Идентификатор сообщения', min_occurs=1, nillable=False)
     correlationId = Unicode(doc='Идентификатор цепочки сообщения', min_occurs=1, nillable=False)
     class Attributes(ComplexModel.Attributes):

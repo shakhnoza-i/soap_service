@@ -1,4 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="IAsyncChannel_N" targetNamespace="http://bip.bee.kz/AsyncChannel/v10/Interfaces" xmlns:tns="http://bip.bee.kz/AsyncChannel/v10/Types" xmlns:tns0="http://bip.bee.kz/AsyncChannel/v10/Interfaces" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="IAsyncChannel_N" 
+targetNamespace="http://bip.bee.kz/AsyncChannel/v10/Interfaces" 
+xmlns:tns="http://bip.bee.kz/AsyncChannel/v10/Types" 
+xmlns:tns0="http://bip.bee.kz/AsyncChannel/v10/Interfaces" 
+xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <wsdl:types>
     <xsd:schema targetNamespace="http://bip.bee.kz/AsyncChannel/v10/Interfaces">
         <xsd:import namespace="http://bip.bee.kz/AsyncChannel/v10/Types" schemaLocation="../Types/IAsyncChannel.xsd"/>    

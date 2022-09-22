@@ -1,4 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="AsyncChannelHttp_Service" targetNamespace="http://bip.bee.kz/AsyncChannel/v10/Interfaces/Binding" xmlns:Port_0="http://bip.bee.kz/AsyncChannel/v10/Interfaces" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:this="http://bip.bee.kz/AsyncChannel/v10/Interfaces/Binding" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions 
+name="AsyncChannelHttp_Service" 
+targetNamespace="http://bip.bee.kz/AsyncChannel/v10/Interfaces/Binding" 
+xmlns:Port_0="http://bip.bee.kz/AsyncChannel/v10/Interfaces" 
+xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+xmlns:this="http://bip.bee.kz/AsyncChannel/v10/Interfaces/Binding" 
+xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:import location="IAsyncChannel.wsdl" namespace="http://bip.bee.kz/AsyncChannel/v10/Interfaces"/>
   <wsdl:binding name="AsyncChannelHttpBinding" type="Port_0:IAsyncChannel"> <!-- match -->
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/> <!-- match -->
@@ -51,7 +58,7 @@
       </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:service name="AsyncChannelHttpService">  <!-- name="SoapService" -->
+  <wsdl:service name="AsyncChannelHttpService">  <!-- match -->
     <wsdl:port binding="this:AsyncChannelHttpBinding" name="AsyncChannelHttpPort">  <!-- match -->
       <soap:address location="http://localhost:9080/SerrviceSampleTypesWeb/sca/AsyncChannelService"/>
     </wsdl:port>  <!-- match -->
