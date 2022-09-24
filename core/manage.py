@@ -2,10 +2,40 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-import spyne.const
+from spyne.interface.wsdl import Wsdl11
+from lxml.etree import SubElement
+from spyne.const.xml import WSDL11
 
 
-spyne.const.DEFAULT_DECLARE_ORDER = 'declared'
+# spyne.const.DEFAULT_DECLARE_ORDER = 'declared'
+
+
+
+def add_message_for_object(self, root, messages, obj, message_name):
+    if obj is not None and not (message_name in messages):
+        messages.add(message_name)
+
+        message = SubElement(root, WSDL11("message"))
+        if (message_name.endswith('Response')):
+            message.set('name', message_name + 'Msg')
+        else:
+            message.set('name', message_name + 'RequestMsg')
+        
+
+        if isinstance(obj, (list, tuple)):
+            objs = obj
+        else:
+            objs = (obj,)
+
+        for obj in objs:
+            part = SubElement(message, WSDL11("part"))
+            if (message_name.endswith('Response')):
+                part.set('name', message_name[:-8] + 'Result')
+            else:
+                part.set('name', message_name + 'Parameters')
+        
+            part.set('element', obj.get_element_name_ns(self.interface))
+
 
 
 def main():
@@ -23,4 +53,5 @@ def main():
 
 
 if __name__ == '__main__':
+    Wsdl11._add_message_for_object = add_message_for_object
     main()

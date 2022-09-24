@@ -18,7 +18,7 @@ class AsyncChannelHttpService(ServiceBase):
     _returns=AsyncSendMessageResponse,
     _out_variable_name='response',
     _throws=ErrorInfo, # _faults works as _throws
-    _wsdl_part_name='sendMessageRequestMsg'
+    # _wsdl_part_name='sendMessageRequestMsg'
 # _out_wsdl_part_name='ResponseMsg', - 'Unknown kwarg(s) %r passed.
 # _in_wsdl_part_name='RequestMsg' - 'Unknown kwarg(s) %r passed.
 # _in_message_name='sendMessageRequestMsg', - change class name everywhere
