@@ -35,12 +35,12 @@ class AsyncChannelHttpService(ServiceBase):
         return response
 
 
-    @rpc(AsyncSendDeliveryNotificationRequest, 
-    _returns=AsyncSendDeliveryNotificationResponse, 
-    _out_variable_name='response',
-    )
-    def sendDeliveryNotification(ctx, request):
-        print(request)
+    # @rpc(AsyncSendDeliveryNotificationRequest, 
+    # _returns=AsyncSendDeliveryNotificationResponse, 
+    # _out_variable_name='response',
+    # )
+    # def sendDeliveryNotification(ctx, request):
+    #     print(request)
 
 
 soap_app = Application(
