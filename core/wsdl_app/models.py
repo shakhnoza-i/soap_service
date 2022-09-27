@@ -33,8 +33,7 @@ class AsyncSendDeliveryNotificationResponse(ComplexModel):
 
 
 class ErrorInfo(Fault):
-    # __type_name__ = "Fault"
-    __name__="getMessagesFault1_getMessagesFault"
+    # __type_name__="getMessagesFault1_getMessagesFault"
     class Attributes(ComplexModel.Attributes):
         min_occurs=1
         nillable=True

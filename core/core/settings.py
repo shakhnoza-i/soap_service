@@ -39,10 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework_xml',
-    'xml_service',
-    'spyne_app',
+    # 'xml_service',
+    # 'spyne_app',
     'wsdl_app',
-    'example_app',
+    # 'example_app',
 ]
 
 MIDDLEWARE = [
@@ -136,3 +136,21 @@ REST_FRAMEWORK = {
     'rest_framework_xml.renderers.XMLRenderer',
   ),
 }
+
+
+import code, traceback, signal
+
+def debug(sig, frame):
+    """Interrupt running process, and provide a python prompt for
+    interactive debugging."""
+    d={'_frame':frame}         # Allow access to frame object.
+    d.update(frame.f_globals)  # Unless shadowed by global
+    d.update(frame.f_locals)
+
+    i = code.InteractiveConsole(d)
+    message  = "Signal received : entering python shell.\nTraceback:\n"
+    message += ''.join(traceback.format_stack(frame))
+    i.interact(message)
+
+def listen():
+    signal.signal(signal.SIGUSR1, debug)  # Register handler

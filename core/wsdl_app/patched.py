@@ -13,6 +13,8 @@ def add_message_for_object(self, root, messages, obj, message_name):
         message = SubElement(root, WSDL11("message"))
         if (message_name.endswith('Response')):
             message.set('name', message_name + 'Msg')
+        elif (message_name.endswith('Fault')):
+            message.set('name', message_name + 'Msg')
         else:
             message.set('name', message_name + 'RequestMsg')
         
@@ -26,6 +28,9 @@ def add_message_for_object(self, root, messages, obj, message_name):
             part = SubElement(message, WSDL11("part"))
             if (message_name.endswith('Response')):
                 part.set('name', message_name[:-8] + 'Result')
+            elif (message_name.endswith('Fault')):
+                part.set('name', message_name)
+# part.set('element', f"{message_name}1_{message_name}") # can't override it - it must match with <xsd:element name="sendMessageFault1_sendMessageFault"
             else:
                 part.set('name', message_name + 'Parameters')
         
@@ -119,8 +124,6 @@ def add_bindings_for_methods(self, service, root, service_name,
         in_header = method.in_header
         if in_header is None:
             in_header = service.__in_header__
-        # import pdb
-        # pdb.set_trace()
 
         if not (in_header is None):
             if isinstance(in_header, (list, tuple)):
