@@ -3,9 +3,10 @@
 import os
 import sys
 from spyne.interface.wsdl import Wsdl11
+from spyne.interface.xml_schema._base import XmlSchema
 
-from wsdl_app.patched import add_message_for_object, add_port_type, add_bindings_for_methods
-
+from wsdl_app.patched_wsdl import add_message_for_object, add_port_type, add_bindings_for_methods
+from wsdl_app.patched_xsd import add_missing_elements_for_methods
 
 def main():
     """Run administrative tasks."""
@@ -25,4 +26,5 @@ if __name__ == '__main__':
     Wsdl11._add_message_for_object = add_message_for_object
     Wsdl11.add_port_type = add_port_type
     Wsdl11.add_bindings_for_methods = add_bindings_for_methods
+    XmlSchema.add_missing_elements_for_methods = add_missing_elements_for_methods
     main()
