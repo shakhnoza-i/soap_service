@@ -10,13 +10,16 @@ def add_missing_elements_for_methods(self):
                     yield method
 
     pref_tns = self.interface.prefmap[self.interface.tns]
-
-    elements = self.get_schema_info(pref_tns).elements
-    try:
-        i = elements.keys().index('ErrorInfo')
-        elements[i].set('name', 'QWEQWEQEWQWE')
-    except ValueError:
-        pass
+    for method in missing_methods():
+        elements = self.get_schema_info(pref_tns).elements
+        # name = method.in_message.get_type_name()
+        # import ipdb
+        # ipdb.set_trace()
+        try:
+            i = elements.keys().index('ErrorInfo')
+            elements[i].set('name', 'sendMessageFault1_sendMessageFault')
+        except ValueError:
+            pass
 
     schema_root = self.schema_dict[pref_tns]
     for method in missing_methods():
@@ -43,3 +46,4 @@ def add_missing_elements_for_methods(self):
                                             .get_type_name_ns(self.interface))
                 elements[name] = element
                 schema_root.append(element)
+                

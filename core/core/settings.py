@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_xml',
     # 'xml_service',
-    # 'spyne_app',
+    'spyne_app',
     'wsdl_app',
     # 'example_app',
 ]
