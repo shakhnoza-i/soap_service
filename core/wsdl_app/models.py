@@ -34,9 +34,15 @@ class AsyncSendDeliveryNotificationResponse(ComplexModel):
 
 
 class ErrorInfo(Fault):
-    __type_name__="sendMessagesFault1_sendMessagesFault"
+    # __type_name__="sendMessageFault1_sendMessageFault"
     __namespace__ = 'http://bip.bee.kz/common/v10/Types' # не прописывается в WSDL схеме
     experimentFault = Unicode(doc='Сообщение об ошибке', min_occurs=1, nillable=False)
-    class Attributes(ComplexModel.Attributes):
-        min_occurs=1
-        nillable=True
+    # class Attributes(ComplexModel.Attributes):
+    #     min_occurs=1
+    #     nillable=True
+
+class sendMessageFault1_sendMessageFault(ErrorInfo):
+    _type_name__="sendMessageFault1_sendMessageFault"
+
+class sendDeliveryNotificationFault1_sendDeliveryNotificationFault(ErrorInfo):
+    __type_name__="sendDeliveryNotificationFault1_sendDeliveryNotificationFault"

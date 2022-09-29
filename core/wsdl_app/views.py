@@ -8,7 +8,7 @@ from spyne.service import ServiceBase
 
 from wsdl_app.models import (AsyncSendMessageRequest, AsyncSendMessageResponse, 
 AsyncSendDeliveryNotificationRequest, AsyncSendDeliveryNotificationResponse,
-ErrorInfo)
+sendMessageFault1_sendMessageFault, sendDeliveryNotificationFault1_sendDeliveryNotificationFault)
 
 
 class AsyncChannelHttpService(ServiceBase):
@@ -17,7 +17,7 @@ class AsyncChannelHttpService(ServiceBase):
     @rpc(AsyncSendMessageRequest, 
     _returns=AsyncSendMessageResponse,
     _out_variable_name='response',
-    _faults=ErrorInfo, # _faults works as _throws
+    _faults=sendMessageFault1_sendMessageFault, # _faults works as _throws
     # _wsdl_part_name='sendMessageRequestMsg'
 # _out_wsdl_part_name='ResponseMsg', - 'Unknown kwarg(s) %r passed.
 # _in_wsdl_part_name='RequestMsg' - 'Unknown kwarg(s) %r passed.
@@ -35,12 +35,13 @@ class AsyncChannelHttpService(ServiceBase):
         return response
 
 
-    # @rpc(AsyncSendDeliveryNotificationRequest, 
-    # _returns=AsyncSendDeliveryNotificationResponse, 
-    # _out_variable_name='response',
-    # )
-    # def sendDeliveryNotification(ctx, request):
-    #     print(request)
+    @rpc(AsyncSendDeliveryNotificationRequest, 
+    _returns=AsyncSendDeliveryNotificationResponse, 
+    _out_variable_name='response',
+    _faults=sendDeliveryNotificationFault1_sendDeliveryNotificationFault,
+    )
+    def sendDeliveryNotification(ctx, request):
+        print(request)
 
 
 soap_app = Application(

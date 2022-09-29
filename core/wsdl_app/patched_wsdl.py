@@ -14,7 +14,9 @@ def add_message_for_object(self, root, messages, obj, message_name):
         if (message_name.endswith('Response')):
             message.set('name', message_name + 'Msg')
         elif (message_name.endswith('Fault')):
-            message.set('name', message_name + 'Msg')
+            message.set('name', f"{message_name.split('_')[0][:-6]}_{message_name.split('_')[1]}Msg")
+            # import ipdb 
+            # ipdb.set_trace()
         else:
             message.set('name', message_name + 'RequestMsg')
         
@@ -29,7 +31,7 @@ def add_message_for_object(self, root, messages, obj, message_name):
             if (message_name.endswith('Response')):
                 part.set('name', message_name[:-8] + 'Result')
             elif (message_name.endswith('Fault')):
-                part.set('name', message_name)
+                part.set('name', message_name.split('_')[1])
 # part.set('element', f"{message_name}1_{message_name}") # can't override it - it must match with <xsd:element name="sendMessageFault1_sendMessageFault"
             else:
                 part.set('name', message_name + 'Parameters')

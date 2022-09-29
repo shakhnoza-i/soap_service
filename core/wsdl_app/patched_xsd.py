@@ -12,12 +12,9 @@ def add_missing_elements_for_methods(self):
     pref_tns = self.interface.prefmap[self.interface.tns]
     for method in missing_methods():
         elements = self.get_schema_info(pref_tns).elements
-        # name = method.in_message.get_type_name()
-        # import ipdb
-        # ipdb.set_trace()
         try:
             i = elements.keys().index('ErrorInfo')
-            elements[i].set('name', 'sendMessageFault1_sendMessageFault')
+            elements[i].set('name', method)
         except ValueError:
             pass
 
