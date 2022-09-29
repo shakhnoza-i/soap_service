@@ -6,6 +6,7 @@ from spyne.model.fault import Fault
 
 class AsyncSendMessageRequest(ComplexModel): 
     __namespace__ = 'http://bip.bee.kz/AsyncChannel/v10/ITypes'
+    inletId = Unicode(doc='Входной идентификатор', min_occurs=1, nillable=False)
     class Attributes(ComplexModel.Attributes):
         min_occurs=1
 
@@ -33,7 +34,9 @@ class AsyncSendDeliveryNotificationResponse(ComplexModel):
 
 
 class ErrorInfo(Fault):
-    # __type_name__="getMessagesFault1_getMessagesFault"
+    __type_name__="sendMessagesFault1_sendMessagesFault"
+    __namespace__ = 'http://bip.bee.kz/common/v10/Types' # не прописывается в WSDL схеме
+    experimentFault = Unicode(doc='Сообщение об ошибке', min_occurs=1, nillable=False)
     class Attributes(ComplexModel.Attributes):
         min_occurs=1
         nillable=True

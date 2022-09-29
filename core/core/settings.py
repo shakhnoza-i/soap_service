@@ -39,10 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework_xml',
-    # 'xml_service',
-    'spyne_app',
+    'xml_service',
+    # 'spyne_app',
     'wsdl_app',
-    # 'example_app',
 ]
 
 MIDDLEWARE = [

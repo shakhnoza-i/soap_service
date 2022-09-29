@@ -1,5 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
-{% spaceless %}
 <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
   <soap:Body>
     <AddResponse xmlns="http://tempuri.org/">
@@ -7,4 +5,3 @@
     </AddResponse>
   </soap:Body>
 </soap:Envelope>
-{% endspaceless %}
