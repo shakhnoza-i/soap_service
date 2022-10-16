@@ -32,7 +32,7 @@ def add_message_for_object(self, root, messages, obj, message_name):
                 part.set('name', message_name[:-8] + 'Result')
             elif (message_name.endswith('Fault')):
                 part.set('name', message_name.split('_')[1])
-# part.set('element', f"{message_name}1_{message_name}") # can't override it - it must match with <xsd:element name="sendMessageFault1_sendMessageFault"
+        # <xsd:element name="sendMessageFault1_sendMessageFault" must match with method name
             else:
                 part.set('name', message_name + 'Parameters')
         
@@ -40,7 +40,6 @@ def add_message_for_object(self, root, messages, obj, message_name):
 
 
 def add_port_type(self, service, root, service_name, types, url):
-    # FIXME: I don't think this call is working.
     cb_port_type = self._add_callbacks(service, root, types,
                                                             service_name, url)
     applied_service_name = self._get_applied_service_name(service)

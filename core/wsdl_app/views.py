@@ -1,12 +1,11 @@
 from django.views.decorators.csrf import csrf_exempt
 from spyne.application import Application
 from spyne.decorator import rpc
-from spyne.model.fault import Fault
 from spyne.protocol.soap import Soap11
 from spyne.server.django import DjangoApplication
 from spyne.service import ServiceBase
 
-from wsdl_app.models import (AsyncSendMessageRequest, AsyncSendMessageResponse, 
+from .models import (AsyncSendMessageRequest, AsyncSendMessageResponse, 
 AsyncSendDeliveryNotificationRequest, AsyncSendDeliveryNotificationResponse,
 sendMessageFault1_sendMessageFault, sendDeliveryNotificationFault1_sendDeliveryNotificationFault)
 
@@ -17,18 +16,7 @@ class AsyncChannelHttpService(ServiceBase):
     @rpc(AsyncSendMessageRequest, 
     _returns=AsyncSendMessageResponse,
     _out_variable_name='response',
-    _faults=sendMessageFault1_sendMessageFault, # _faults works as _throws
-    # _wsdl_part_name='sendMessageRequestMsg'
-# _out_wsdl_part_name='ResponseMsg', - 'Unknown kwarg(s) %r passed.
-# _in_wsdl_part_name='RequestMsg' - 'Unknown kwarg(s) %r passed.
-# _in_message_name='sendMessageRequestMsg', - change class name everywhere
-# _out_message_name='sendMessageResponseMsg',
-# _args=['bazon','bazon2','bazon3','bazon4','bazon5',]  -  spyne.LogicError: 'sendMessage' function has 5 argument(s) but the _args argument has 1
-# _event_manager=ErrorInfo - nothing changed
-# _event_managers=ErrorInfo - type object 'ErrorInfo' has no attribute 'append'
-# _wsdl_part_name='sendMessageRequestMsg'  - changed <wsdl:part name both for request and response, but they must be different
-# _internal_key_suffix='question' - nothing changed
-# _operation_name='question' - changed everywhere request method name (only method name, not class)
+    _faults=sendMessageFault1_sendMessageFault,
     )
     def sendMessage(ctx, request):
         response = 'Hello, {}'.format(request)
