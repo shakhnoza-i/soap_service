@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  core:
+    container_name: backend
+    build:
+      context: .
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./core:/core
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8001"]
+    restart: on-failure
