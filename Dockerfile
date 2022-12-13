@@ -12,18 +12,17 @@ ENV PYTHONDONTWRITEBYTECODE 1
 RUN apt-get update \
   && apt-get upgrade
 
-COPY ./requirements.txt /requirements.txt
-RUN pip install -r /requirements.txt
+WORKDIR /usr/src/backend/core
 
-RUN mkdir /core
-WORKDIR /core
-COPY ./core /core
+COPY requirements.txt requirements.txt
+RUN pip3 install --upgrade pip
+RUN pip3 install -r requirements.txt
 
 RUN addgroup --system soap_user \
     && adduser --system --ingroup soap_user soap_user
 
-# chown all the files to the soap_user     
-RUN chown -R soap_user:soap_user $HOME
-RUN chown -R 777 $HOME
+COPY ./core /usr/src/backend/core
+
 # Switch to a non-root user
 USER soap_user
+EXPOSE 8000

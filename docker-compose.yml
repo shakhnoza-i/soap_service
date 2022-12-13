@@ -1,13 +1,16 @@
-version: "3"
+version: "3.7"
 
 services:
   core:
-    container_name: backend
+    container_name: soap_app
     build:
       context: .
     ports:
-      - "8001:8001"
+      - "8001:8000"
     volumes:
       - ./core:/core
-    command: ["python", "manage.py", "runserver", "0.0.0.0:8001"]
+    command: "gunicorn -c gunicorn.py core.wsgi"
+    environment:
+      - DEBUG=True
+      - SECRET_KEY=${SECRET_KEY}
     restart: on-failure
